@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import SplashScreen from "../screens/SplashScreen";
 import MainScreen from "../screens/MainScreen";
 import LoginScreen from "../screens/LoginScreen";
+import GeneralScreen from "../screens/GeneralScreen";
 
 const Stack = createStackNavigator();
 const InitialNav = () => {
@@ -11,8 +12,9 @@ const InitialNav = () => {
             screenOptions={{
                 headerShown: false,
             }}
-            initialRouteName="Login"
+            initialRouteName="General"
         >
+            <Stack.Screen name="General" component={GeneralScreen} />
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Splash" component={SplashScreen} />
             <Stack.Screen name="Main" component={MainScreen} />
