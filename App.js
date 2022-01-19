@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React, { useEffect, useRef } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import InitialNav from "./navigation/InitialNav";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    // const flashRef = useRef(null);
+
+    return (
+        <NavigationContainer>
+            <StatusBar style="auto" />
+            {/* <StoreProvider> */}
+            <InitialNav />
+            {/* <FlashMessage position="bottom" floating={true} ref={flashRef} /> */}
+            {/* </StoreProvider> */}
+        </NavigationContainer>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+    },
 });
