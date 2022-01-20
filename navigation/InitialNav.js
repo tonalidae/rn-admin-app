@@ -4,6 +4,8 @@ import SplashScreen from "../screens/SplashScreen";
 import MainScreen from "../screens/MainScreen";
 import LoginScreen from "../screens/LoginScreen";
 import GeneralScreen from "../screens/GeneralScreen";
+import CostCenterScreen from "../screens/CostCenterScreen";
+import PersonalFinanceScreen from "../screens/PersonalFinanceScreen";
 
 const Stack = createStackNavigator();
 const InitialNav = () => {
@@ -12,8 +14,13 @@ const InitialNav = () => {
             screenOptions={{
                 headerShown: false,
             }}
-            initialRouteName="General"
+            initialRouteName="PersonalFinance"
         >
+            <Stack.Screen
+                name="PersonalFinance"
+                component={PersonalFinanceScreen}
+            />
+            <Stack.Screen name="CostCenter" component={CostCenterScreen} />
             <Stack.Screen name="General" component={GeneralScreen} />
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Splash" component={SplashScreen} />
