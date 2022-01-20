@@ -6,6 +6,7 @@ import LoginScreen from "../screens/LoginScreen";
 import GeneralScreen from "../screens/GeneralScreen";
 import CostCenterScreen from "../screens/CostCenterScreen";
 import PersonalFinanceScreen from "../screens/PersonalFinanceScreen";
+import MonthlyCustomersScreen from "../screens/MonthlyCustomersScreen";
 
 const Stack = createStackNavigator();
 const InitialNav = () => {
@@ -14,11 +15,15 @@ const InitialNav = () => {
             screenOptions={{
                 headerShown: false,
             }}
-            initialRouteName="PersonalFinance"
+            initialRouteName="MonthlyCustomers"
         >
             <Stack.Screen
                 name="PersonalFinance"
                 component={PersonalFinanceScreen}
+            />
+            <Stack.Screen
+                name="MonthlyCustomers"
+                component={MonthlyCustomersScreen}
             />
             <Stack.Screen name="CostCenter" component={CostCenterScreen} />
             <Stack.Screen name="General" component={GeneralScreen} />
