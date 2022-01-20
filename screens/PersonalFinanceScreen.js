@@ -47,6 +47,8 @@ const PersonalFinanceScreen = ({ route }) => {
     const [executiveOpen, setExecutiveOpen] = useState(false);
     const [costCenterOpen, setCostCenterOpen] = useState(false);
 
+    const [show, setShow] = useState(false);
+
     const onPressFromDate = useCallback(() => {
         setFromDateOpen(true);
         setToDateOpen(false);
@@ -426,13 +428,18 @@ const PersonalFinanceScreen = ({ route }) => {
                                 />
                                 <TouchableOpacity
                                     style={styles.button}
+                                    onPress={() =>
+                                        show === false
+                                            ? setShow(true)
+                                            : setShow(false)
+                                    }
                                     // onPress={() => navigation.navigate("General")}
                                 >
                                     <Text style={styles.buttonText}>
                                         Consultar
                                     </Text>
                                 </TouchableOpacity>
-                                <Report />
+                                {show ? <Report /> : null}
                             </View>
                         </View>
                     </View>
