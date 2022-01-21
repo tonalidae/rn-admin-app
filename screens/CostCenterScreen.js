@@ -17,6 +17,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Feather } from "@expo/vector-icons";
 
+import CostCenterInfo from "../components/CostCenterInfo";
+
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
@@ -54,6 +56,8 @@ const CostCenterScreen = ({ route }) => {
         },
     ]);
 
+    const [show, setShow] = useState(false);
+
     if (!fontsLoaded) {
         return <Text>Loading...</Text>;
     } else {
@@ -70,9 +74,9 @@ const CostCenterScreen = ({ route }) => {
                     showsVerticalScrollIndicator={false}
                 >
                     <View style={styles.header}>
-                        <Text style={styles.headerText}>
+                        {/* <Text style={styles.headerText}>
                             Gestión de Centros de Costo
-                        </Text>
+                        </Text> */}
                     </View>
 
                     <View style={styles.body}>
@@ -145,48 +149,17 @@ const CostCenterScreen = ({ route }) => {
                                 />
                                 <TouchableOpacity
                                     style={styles.button}
-                                    // onPress={() => navigation.navigate("General")}
+                                    onPress={() =>
+                                        show === false
+                                            ? setShow(true)
+                                            : setShow(false)
+                                    }
                                 >
                                     <Text style={styles.buttonText}>
                                         Consultar
                                     </Text>
                                 </TouchableOpacity>
-                                <View style={styles.bodyCardContainer}>
-                                    <View style={styles.card}>
-                                        <View style={styles.cardContent}>
-                                            <Text style={styles.cardText}>
-                                                TOTAL LEADS EN PROCESO
-                                            </Text>
-                                            <Feather
-                                                name="loader"
-                                                size={60}
-                                                color="#FD53A5"
-                                                style={{ opacity: 0.5 }}
-                                            />
-                                            <Text style={styles.cardNumbers}>
-                                                {/* {route.params.leads} */}
-                                                123.456
-                                            </Text>
-                                        </View>
-                                    </View>
-                                    <View style={styles.card}>
-                                        <View style={styles.cardContent}>
-                                            <Text style={styles.cardText}>
-                                                TOTAL LEADS LIBRES
-                                            </Text>
-                                            <Feather
-                                                name="loader"
-                                                size={60}
-                                                color="#FD53A5"
-                                                style={{ opacity: 0.5 }}
-                                            />
-                                            <Text style={styles.cardNumbers}>
-                                                {/* {route.params.leads} */}
-                                                123.456
-                                            </Text>
-                                        </View>
-                                    </View>
-                                </View>
+                                {show ? <CostCenterInfo /> : null}
                             </View>
                         </View>
                     </View>
@@ -273,49 +246,5 @@ const styles = StyleSheet.create({
         fontFamily: "DosisBold",
         fontSize: 17,
         color: "#fff",
-    },
-    bodyCardContainer: {
-        paddingVertical: 40,
-        flex: 1,
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "space-around",
-        shadowColor: "#2C2828",
-    },
-    card: {
-        // flex: 1,
-        width: width * 0.6,
-        height: height * 0.25,
-        paddingBottom: 10,
-        backgroundColor: "#fff",
-        borderRadius: 10,
-        // borderWidth: 0.5,
-        // borderColor: "#2C28281C",
-        shadowColor: "#2C2828",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.23,
-        shadowRadius: 2.62,
-
-        elevation: 4,
-        marginBottom: 20,
-    },
-    cardContent: {
-        flex: 1,
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "space-around",
-    },
-    cardText: {
-        fontFamily: "DosisBold",
-        fontSize: 15,
-        color: "#8898AA",
-    },
-    cardNumbers: {
-        fontFamily: "DosisRegular",
-        fontSize: 30,
-        color: "#4D4F5C",
     },
 });

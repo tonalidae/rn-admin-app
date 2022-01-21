@@ -21,7 +21,7 @@ import Report from "../components/Report";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
-const PersonalFinanceScreen = ({ route }) => {
+const ConsolidationManagerScreen = ({ route }) => {
     const [fontsLoaded] = useFonts({
         DosisBold: require("../assets/fonts/Dosis/Dosis-Bold.ttf"),
         DosisRegular: require("../assets/fonts/Dosis/Dosis-Regular.ttf"),
@@ -143,7 +143,7 @@ const PersonalFinanceScreen = ({ route }) => {
                 >
                     <View style={styles.header}>
                         {/* <Text style={styles.headerText}>
-                            Consolidado individual
+                            Consolidado Centro
                         </Text> */}
                     </View>
 
@@ -290,74 +290,7 @@ const PersonalFinanceScreen = ({ route }) => {
                                     zIndex={2000}
                                     zIndexInverse={2000}
                                 />
-                                <DropDownPicker
-                                    items={executive}
-                                    value={value3}
-                                    open={executiveOpen}
-                                    onOpen={onPressExecutive}
-                                    // searchable={true}
-                                    searchPlaceholder="Buscar"
-                                    setOpen={setExecutiveOpen}
-                                    style={{
-                                        borderColor: "#0325FF0A",
-                                        borderWidth: 0.2,
-                                        borderRadius: 5,
-                                        shadowColor: "#0325FF14",
-                                        shadowOffset: {
-                                            width: 0,
-                                            height: 2,
-                                        },
-                                        shadowOpacity: 0.7,
-                                        shadowRadius: 3.84,
-                                        elevation: 5,
-                                    }}
-                                    listItemLabelStyle={{
-                                        fontFamily: "DosisRegular",
-                                        fontSize: 16,
-                                        color: "#8395A5",
-                                    }}
-                                    searchContainerStyle={{
-                                        // backgroundColor: "cyan",
-                                        borderBottomColor: "#dfdfdf",
-                                    }}
-                                    setValue={setValue3}
-                                    setItems={setExecutive}
-                                    placeholder="Ejecutivo"
-                                    placeholderStyle={{
-                                        textAlign: "left",
-                                        color: "#A6BCD0",
-                                        fontFamily: "DosisRegular",
-                                        fontSize: 17,
-                                    }}
-                                    searchPlaceholderTextColor="#A6BCD0"
-                                    containerStyle={{
-                                        width: width * 0.8,
-                                        height: 50,
-                                        borderRadius: 5,
-                                        marginTop: 20,
-                                        marginBottom: 20,
-                                        borderColor: "#0325FF0A",
-                                        borderWidth: 1,
-                                    }}
-                                    dropDownContainerStyle={{
-                                        // backgroundColor: "cyan",
-                                        width: width * 0.8,
-                                        borderRadius: 10,
-                                        borderColor: "#dfdfdf",
-                                        borderWidth: 1,
-                                        marginTop: 10,
-                                        marginBottom: 10,
-                                    }}
-                                    ArrowDownIconComponent={({ style }) => (
-                                        <MaterialIcons
-                                            name="keyboard-arrow-down"
-                                            size={24}
-                                            color="#A6BCD0"
-                                        />
-                                    )}
-                                    zIndex={1000}
-                                    zIndexInverse={3000}
-                                />
+
                                 <DropDownPicker
                                     items={costCenter}
                                     value={value4}
@@ -449,7 +382,7 @@ const PersonalFinanceScreen = ({ route }) => {
     }
 };
 
-export default PersonalFinanceScreen;
+export default ConsolidationManagerScreen;
 
 const styles = StyleSheet.create({
     container: {

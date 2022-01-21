@@ -71,7 +71,7 @@ const AccountScreen = () => {
                     }}
                     showsVerticalScrollIndicator={false}
                 >
-                    <Text style={styles.pageTitle}>Mi cuenta</Text>
+                    {/* <Text style={styles.pageTitle}>Mi cuenta</Text> */}
                     <Ionicons
                         name="md-person-circle"
                         size={105}

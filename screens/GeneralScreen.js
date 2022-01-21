@@ -55,11 +55,11 @@ const GeneralScreen = ({ route }) => {
                     }}
                     showsVerticalScrollIndicator={false}
                 >
-                    <View style={styles.header}>
-                        <Text style={styles.headerText}>
+                    {/* <View style={styles.header}> */}
+                    {/* <Text style={styles.headerText}>
                             Información general
-                        </Text>
-                    </View>
+                        </Text> */}
+                    {/* </View> */}
 
                     <View style={styles.body}>
                         <View style={styles.bodyContent}>

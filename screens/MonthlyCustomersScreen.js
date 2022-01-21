@@ -55,6 +55,8 @@ const MonthlyCustomersScreen = ({ route }) => {
         },
     ]);
 
+    const [show, setShow] = useState(false);
+
     if (!fontsLoaded) {
         return <Text>Loading...</Text>;
     } else {
@@ -71,9 +73,9 @@ const MonthlyCustomersScreen = ({ route }) => {
                     showsVerticalScrollIndicator={false}
                 >
                     <View style={styles.header}>
-                        <Text style={styles.headerText}>
+                        {/* <Text style={styles.headerText}>
                             Gestión de Centros de Costo
-                        </Text>
+                        </Text> */}
                     </View>
 
                     <View style={styles.body}>
@@ -146,13 +148,18 @@ const MonthlyCustomersScreen = ({ route }) => {
                                 />
                                 <TouchableOpacity
                                     style={styles.button}
+                                    onPress={() =>
+                                        show === false
+                                            ? setShow(true)
+                                            : setShow(false)
+                                    }
                                     // onPress={() => navigation.navigate("General")}
                                 >
                                     <Text style={styles.buttonText}>
                                         Consultar
                                     </Text>
                                 </TouchableOpacity>
-                                <MonthlyReport />
+                                {show ? <MonthlyReport /> : null}
                             </View>
                         </View>
                     </View>
