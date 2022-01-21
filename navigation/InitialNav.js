@@ -10,6 +10,7 @@ import PersonalFinanceScreen from "../screens/PersonalFinanceScreen";
 import MonthlyCustomersScreen from "../screens/MonthlyCustomersScreen";
 import AccountScreen from "../screens/AccountScreen";
 import ConsolidationManagerScreen from "../screens/ConsolidationManager";
+import TabNav from "../navigation/TabNav";
 
 import { useFonts } from "expo-font";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
@@ -22,7 +23,6 @@ const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
 const Drawer = createDrawerNavigator();
-const Stack = createStackNavigator();
 
 const InitialNav = () => {
     const [fontsLoaded] = useFonts({
@@ -100,7 +100,7 @@ const InitialNav = () => {
                 />
                 <Drawer.Screen
                     name="Información general"
-                    component={GeneralScreen}
+                    component={TabNav}
                     options={{
                         drawerLabel: "Información general",
 
@@ -120,6 +120,28 @@ const InitialNav = () => {
                         ),
                     }}
                 />
+                {/* <Drawer.Screen
+                    name="Información general"
+                    component={GeneralScreen}
+                    options={{
+                        drawerLabel: "Información general",
+
+                        drawerLabelStyle: {
+                            color: "#fff",
+                            fontFamily: "DosisSemiBold",
+                            fontSize: 17,
+                        },
+                        drawerIcon: ({ focused, color, size }) => (
+                            <View>
+                                <MaterialIcons
+                                    name="bar-chart"
+                                    size={24}
+                                    color="white"
+                                />
+                            </View>
+                        ),
+                    }}
+                /> */}
                 <Drawer.Screen
                     name="Gestión centros"
                     component={CostCenterScreen}

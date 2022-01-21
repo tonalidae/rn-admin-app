@@ -156,7 +156,7 @@ const PersonalFinanceScreen = ({ route }) => {
     ]);
 
     if (!fontsLoaded) {
-        return <Text>Loading...</Text>;
+        return <View />;
     } else {
         return (
             <SafeAreaView style={styles.container}>

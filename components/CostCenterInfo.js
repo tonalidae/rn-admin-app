@@ -43,7 +43,7 @@ const CostCenterInfo = () => {
     const navigation = useNavigation();
 
     if (!fontsLoaded) {
-        return <Text>Loading...</Text>;
+        return <View />;
     } else {
         return (
             <View style={styles.bodyCardContainer}>

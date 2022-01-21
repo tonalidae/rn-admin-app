@@ -13,7 +13,7 @@ const SplashScreen = () => {
     useEffect(() => {
         setTimeout(() => {
             setSplash("CasaPropia");
-        }, 5000);
+        }, 4000);
     }, []);
 
     return (
@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
     },
     tcp: {
-        width: "50%",
-        height: "50%",
+        width: "45%",
+        height: "45%",
         resizeMode: "contain",
     },
 });

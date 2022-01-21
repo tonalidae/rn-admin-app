@@ -171,9 +171,7 @@ const Report = () => {
                     justifyContent: "center",
                     alignItems: "center",
                 }}
-            >
-                <Text>Loading fonts</Text>
-            </View>
+            ></View>
         );
     } else {
         return (
