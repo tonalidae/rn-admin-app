@@ -20,7 +20,7 @@ const SplashScreen = () => {
         <View style={styles.container}>
             {splash === "Admin" && (
                 <Image
-                    source={require("../assets/images/logo3x.png")}
+                    source={require("../assets/images/adminsplash.png")}
                     style={styles.logo}
                 />
             )}
@@ -50,9 +50,9 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     logo: {
-        width: "60%",
-        height: "60%",
-        resizeMode: "contain",
+        width: "100%",
+        height: "100%",
+        resizeMode: "cover",
     },
     utd: {
         width: "60%",
@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
     },
     tcp: {
-        width: "60%",
-        height: "60%",
+        width: "50%",
+        height: "50%",
         resizeMode: "contain",
     },
 });

@@ -121,18 +121,18 @@ const CostCenterScreen = ({ route }) => {
                                             ? {
                                                   fontSize: 17,
                                                   fontFamily: "DosisSemiBold",
-                                                  color: "#fff",
+                                                  color: "#8395A5",
                                                   textAlign: "center",
                                               }
                                             : {
-                                                  fontSize: 17,
+                                                  fontSize: 16,
                                                   fontFamily: "DosisSemiBold",
                                                   color: "#8395A5",
                                                   textAlign: "left",
                                               }
                                     }
                                     listMode="MODAL"
-                                    modalTitle="Centros de costo"
+                                    modalTitle="Selecciona el centro de costo"
                                     searchPlaceholder="Buscar"
                                     setOpen={setOpen}
                                     style={{
@@ -174,7 +174,7 @@ const CostCenterScreen = ({ route }) => {
                                         // left: width * 0.3,
                                         width: width * 1,
                                         // height: height * 0.4,
-                                        backgroundColor: "#FD53A5",
+                                        backgroundColor: "white",
                                         borderRadius: 5,
                                         shadowColor: "#0325FF14",
                                         shadowOffset: {
@@ -216,15 +216,15 @@ const CostCenterScreen = ({ route }) => {
                                     TickIconComponent={({ style }) => (
                                         <Ionicons
                                             name="checkmark-circle"
-                                            size={24}
-                                            color="white"
+                                            size={20}
+                                            color="#FD53A5"
                                         />
                                     )}
                                     CloseIconComponent={({ style }) => (
                                         <Feather
                                             name="x"
                                             size={24}
-                                            color="white"
+                                            color="#FD53A5"
                                         />
                                     )}
                                     zIndex={3000}

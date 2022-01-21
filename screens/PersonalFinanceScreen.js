@@ -303,6 +303,11 @@ const PersonalFinanceScreen = ({ route }) => {
 
                                 <DropDownPicker
                                     listMode="SCROLLVIEW"
+                                    textStyle={{
+                                        fontFamily: "DosisRegular",
+                                        fontSize: 16,
+                                        color: "#8395A5",
+                                    }}
                                     items={executive}
                                     value={value3}
                                     open={executiveOpen}
@@ -372,6 +377,11 @@ const PersonalFinanceScreen = ({ route }) => {
                                 />
                                 <DropDownPicker
                                     listMode="SCROLLVIEW"
+                                    textStyle={{
+                                        fontFamily: "DosisRegular",
+                                        fontSize: 16,
+                                        color: "#8395A5",
+                                    }}
                                     items={costCenter}
                                     value={value4}
                                     open={costCenterOpen}

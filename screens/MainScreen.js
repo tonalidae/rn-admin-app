@@ -70,7 +70,7 @@ const MainScreen = ({ route }) => {
                 >
                     <TouchableOpacity
                         onPress={() => console.log("Login")}
-                        // onPress={() => navigation.navigate("Login")}
+                        onPress={() => navigation.navigate("Login")}
                         style={styles.StartBtn}
                     >
                         <Text style={styles.StartBtnTextBold}>

@@ -131,7 +131,9 @@ const LoginScreen = () => {
                         <View style={styles.buttonContainer}>
                             <TouchableOpacity
                                 style={styles.button}
-                                onPress={() => console.log("Login")}
+                                onPress={() =>
+                                    navigation.navigate("InitialNav")
+                                }
                             >
                                 <Feather
                                     name="arrow-right"

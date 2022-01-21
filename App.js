@@ -1,8 +1,9 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import InitialNav from "./navigation/InitialNav";
+import StackNav from "./navigation/StackNav";
 
 export default function App() {
     // const flashRef = useRef(null);
@@ -11,7 +12,7 @@ export default function App() {
         <NavigationContainer>
             <StatusBar style="auto" />
             {/* <StoreProvider> */}
-            <InitialNav />
+            <StackNav />
             {/* <FlashMessage position="bottom" floating={true} ref={flashRef} /> */}
             {/* </StoreProvider> */}
         </NavigationContainer>
