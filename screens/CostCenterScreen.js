@@ -89,7 +89,13 @@ const CostCenterScreen = ({ route }) => {
                                     items={items}
                                     value={value}
                                     open={open}
-                                    searchable={true}
+                                    // searchable={true}
+                                    textStyle={{
+                                        textAlign: "center",
+                                        fontFamily: "DosisRegular",
+                                        color: "#8395A5",
+                                    }}
+                                    listMode="SCROLLVIEW"
                                     searchPlaceholder="Buscar"
                                     setOpen={setOpen}
                                     style={{
@@ -107,10 +113,10 @@ const CostCenterScreen = ({ route }) => {
                                         // marginTop: 10,
                                         // marginBottom: 10,
                                     }}
-                                    searchContainerStyle={{
-                                        // backgroundColor: "cyan",
-                                        borderBottomColor: "#dfdfdf",
-                                    }}
+                                    // searchContainerStyle={{
+                                    //     // backgroundColor: "cyan",
+                                    //     borderBottomColor: "#dfdfdf",
+                                    // }}
                                     setValue={setValue}
                                     setItems={setItems}
                                     placeholder="Selecciona un centro de costo"

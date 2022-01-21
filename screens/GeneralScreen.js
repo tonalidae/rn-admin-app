@@ -178,10 +178,15 @@ const styles = StyleSheet.create({
         shadowColor: "#2C2828",
     },
     card: {
+        // backgroundColor: "coral",
+
         // flex: 1,
-        width: width * 0.6,
-        height: "32%",
-        paddingBottom: 10,
+        width: width * 0.55,
+
+        height: height * 0.25,
+
+        marginBottom: 20,
+        // paddingBottom: 25,
         backgroundColor: "#fff",
         borderRadius: 10,
         // borderWidth: 0.5,
@@ -191,16 +196,19 @@ const styles = StyleSheet.create({
             width: 0,
             height: 2,
         },
-        shadowOpacity: 0.23,
-        shadowRadius: 2.62,
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
 
         elevation: 4,
     },
     cardContent: {
         flex: 1,
+        paddingVertical: 10,
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "space-around",
+        // justifyContent: "space-around",
+        justifyContent: "space-evenly",
+        // marginBottom: 100,
     },
     cardText: {
         fontFamily: "DosisBold",
