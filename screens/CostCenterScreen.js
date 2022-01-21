@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import {
@@ -16,8 +16,10 @@ import { useFonts } from "expo-font";
 import { MaterialIcons } from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 import CostCenterInfo from "../components/CostCenterInfo";
+import { set } from "react-native-reanimated";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -43,6 +45,7 @@ const CostCenterScreen = ({ route }) => {
         ArialRoundedMTBold: require("../assets/fonts/ArialRoundedMT/arial-rounded-mt-bold.ttf"),
     });
     const navigation = useNavigation();
+
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
@@ -53,6 +56,26 @@ const CostCenterScreen = ({ route }) => {
         {
             label: "Cost Center 2",
             value: "Cost Center 2",
+        },
+        {
+            label: "Cost Center 3",
+            value: "Cost Center 3",
+        },
+        {
+            label: "Cost Center 4",
+            value: "Cost Center 4",
+        },
+        {
+            label: "Cost Center 5",
+            value: "Cost Center 5",
+        },
+        {
+            label: "Cost Center 6",
+            value: "Cost Center 6",
+        },
+        {
+            label: "Cost Center 7",
+            value: "Cost Center 7",
         },
     ]);
 
@@ -89,13 +112,27 @@ const CostCenterScreen = ({ route }) => {
                                     items={items}
                                     value={value}
                                     open={open}
-                                    // searchable={true}
-                                    textStyle={{
-                                        textAlign: "center",
-                                        fontFamily: "DosisRegular",
-                                        color: "#8395A5",
+                                    headerStyle={{
+                                        backgroundColor: "#f1f1f1",
                                     }}
-                                    listMode="SCROLLVIEW"
+                                    // searchable={true}
+                                    textStyle={
+                                        open === true
+                                            ? {
+                                                  fontSize: 17,
+                                                  fontFamily: "DosisSemiBold",
+                                                  color: "#fff",
+                                                  textAlign: "center",
+                                              }
+                                            : {
+                                                  fontSize: 17,
+                                                  fontFamily: "DosisSemiBold",
+                                                  color: "#8395A5",
+                                                  textAlign: "left",
+                                              }
+                                    }
+                                    listMode="MODAL"
+                                    modalTitle="Centros de costo"
                                     searchPlaceholder="Buscar"
                                     setOpen={setOpen}
                                     style={{
@@ -126,6 +163,28 @@ const CostCenterScreen = ({ route }) => {
                                         fontFamily: "DosisRegular",
                                         fontSize: 17,
                                     }}
+                                    modalTitleStyle={{
+                                        textAlign: "center",
+                                        fontFamily: "DosisBold",
+                                        color: "#fff",
+                                        fontSize: 20,
+                                        borderBottomColor: "transparent",
+                                    }}
+                                    modalContentContainerStyle={{
+                                        // left: width * 0.3,
+                                        width: width * 1,
+                                        // height: height * 0.4,
+                                        backgroundColor: "#FD53A5",
+                                        borderRadius: 5,
+                                        shadowColor: "#0325FF14",
+                                        shadowOffset: {
+                                            width: 0,
+                                            height: 2,
+                                        },
+                                        shadowOpacity: 0.7,
+                                        shadowRadius: 3.84,
+                                        elevation: 5,
+                                    }}
                                     searchPlaceholderTextColor="#A6BCD0"
                                     containerStyle={{
                                         width: width * 0.8,
@@ -138,12 +197,14 @@ const CostCenterScreen = ({ route }) => {
                                     }}
                                     dropDownContainerStyle={{
                                         // backgroundColor: "cyan",
+                                        backgroundColor: "#FD53A5",
                                         width: width * 0.8,
                                         borderRadius: 10,
                                         borderColor: "#dfdfdf",
                                         borderWidth: 1,
                                         marginTop: 10,
                                         marginBottom: 10,
+                                        elevation: 5,
                                     }}
                                     ArrowDownIconComponent={({ style }) => (
                                         <MaterialIcons
@@ -152,7 +213,24 @@ const CostCenterScreen = ({ route }) => {
                                             color="#A6BCD0"
                                         />
                                     )}
+                                    TickIconComponent={({ style }) => (
+                                        <Ionicons
+                                            name="checkmark-circle"
+                                            size={24}
+                                            color="white"
+                                        />
+                                    )}
+                                    CloseIconComponent={({ style }) => (
+                                        <Feather
+                                            name="x"
+                                            size={24}
+                                            color="white"
+                                        />
+                                    )}
+                                    zIndex={3000}
+                                    zIndexInverse={1000}
                                 />
+
                                 <TouchableOpacity
                                     style={styles.button}
                                     onPress={() =>

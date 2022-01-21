@@ -11,12 +11,33 @@ import {
     Dimensions,
     Animated,
     SafeAreaView,
+    Platform,
 } from "react-native";
 import { useFonts } from "expo-font";
 import { MaterialIcons } from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Feather } from "@expo/vector-icons";
 import Report from "../components/Report";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+// import moment from "moment";
+// import DateRangePicker from "react-native-daterange-picker";
+
+// import {
+//     en,
+//     // nl,
+//     // de,
+//     // pl,
+//     // pt,
+//     // enGB,
+//     registerTranslation,
+// } from "react-native-paper-dates";
+// registerTranslation("en", en);
+// // registerTranslation('nl', nl)
+// // registerTranslation('pl', pl)
+// // registerTranslation('pt', pt)
+// // registerTranslation('de', de)
+// // registerTranslation("en-GB", enGB);
+// import { DatePickerModal } from "react-native-paper-dates";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -47,32 +68,54 @@ const PersonalFinanceScreen = ({ route }) => {
     const [executiveOpen, setExecutiveOpen] = useState(false);
     const [costCenterOpen, setCostCenterOpen] = useState(false);
 
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+    const [isDatePickerVisible2, setDatePickerVisibility2] = useState(false);
+
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
+
+    const handleConfirm = (date) => {
+        console.log("Se eligio una fecha inicial:", date);
+        hideDatePicker();
+    };
+    const showDatePicker2 = () => {
+        setDatePickerVisibility2(true);
+    };
+
+    const hideDatePicker2 = () => {
+        setDatePickerVisibility2(false);
+    };
+
+    const handleConfirm2 = (date2) => {
+        console.log("La fecha final es: ", date2);
+        hideDatePicker2();
+    };
+    //    Para usar paquete react native paper dates
+    // const [visible, setVisible] = useState(false);
+    // const onDismiss = useCallback(() => {
+    //     setVisible(false), [setVisible];
+    // });
+
+    // const onChange = useCallback(({ date }) => {
+    //     setVisible(false);
+    //     console.log(date);
+    // }, []);
+
+    // const date = new Date();
+
     const [show, setShow] = useState(false);
 
-    const onPressFromDate = useCallback(() => {
-        setFromDateOpen(true);
-        setToDateOpen(false);
-        setExecutiveOpen(false);
-        setCostCenterOpen(false);
-    }, []);
-
-    const onPressToDate = useCallback(() => {
-        setFromDateOpen(false);
-        setToDateOpen(true);
-        setExecutiveOpen(false);
-        setCostCenterOpen(false);
-    }, []);
-
     const onPressExecutive = useCallback(() => {
-        setFromDateOpen(false);
-        setToDateOpen(false);
         setExecutiveOpen(true);
         setCostCenterOpen(false);
     }, []);
 
     const onPressCostCenter = useCallback(() => {
-        setFromDateOpen(false);
-        setToDateOpen(false);
         setExecutiveOpen(false);
         setCostCenterOpen(true);
     }, []);
@@ -82,36 +125,22 @@ const PersonalFinanceScreen = ({ route }) => {
     const [value3, setValue3] = useState(null);
     const [value4, setValue4] = useState(null);
 
-    const [fromDate, setFromDate] = useState([
-        {
-            label: "Amalia Central - Tunja",
-            value: "Amalia Central - Tunja",
-        },
-        {
-            label: "Cost Center 2",
-            value: "Cost Center 2",
-        },
-    ]);
-
-    const [toDate, setToDate] = useState([
-        {
-            label: "Amalia Central - Tunja",
-            value: "Amalia Central - Tunja",
-        },
-        {
-            label: "Cost Center 2",
-            value: "Cost Center 2",
-        },
-    ]);
-
     const [executive, setExecutive] = useState([
         {
-            label: "Amalia Central - Tunja",
-            value: "Amalia Central - Tunja",
+            label: "Ejecutivo 1",
+            value: "Ejecutivo 1",
         },
         {
-            label: "Cost Center 2",
-            value: "Cost Center 2",
+            label: "Ejecutivo 2",
+            value: "Ejecutivo 2",
+        },
+        {
+            label: "Ejecutivo 3",
+            value: "Ejecutivo 3",
+        },
+        {
+            label: "Ejecutivo 4",
+            value: "Ejecutivo 4",
         },
     ]);
 
@@ -154,143 +183,126 @@ const PersonalFinanceScreen = ({ route }) => {
                                     Selecciona todos los campos para generar la
                                     consulta
                                 </Text>
-                                <DropDownPicker
-                                    items={fromDate}
-                                    value={value1}
-                                    open={fromDateOpen}
-                                    onOpen={onPressFromDate}
-                                    // searchable={true}
-                                    searchPlaceholder="Buscar"
-                                    setOpen={setFromDateOpen}
-                                    style={{
-                                        borderColor: "#0325FF0A",
-                                        borderWidth: 0.2,
-                                        borderRadius: 5,
-                                        shadowColor: "#0325FF14",
-                                        shadowOffset: {
-                                            width: 0,
-                                            height: 2,
-                                        },
-                                        shadowOpacity: 0.7,
-                                        shadowRadius: 3.84,
-                                        elevation: 5,
-                                    }}
-                                    listItemLabelStyle={{
-                                        fontFamily: "DosisRegular",
-                                        fontSize: 16,
-                                        color: "#8395A5",
-                                    }}
-                                    searchContainerStyle={{
-                                        // backgroundColor: "cyan",
-                                        borderBottomColor: "#dfdfdf",
-                                    }}
-                                    setValue={setValue1}
-                                    setItems={setFromDate}
-                                    placeholder="Fecha desde"
-                                    placeholderStyle={{
-                                        textAlign: "left",
-                                        color: "#A6BCD0",
-                                        fontFamily: "DosisRegular",
-                                        fontSize: 17,
-                                    }}
-                                    searchPlaceholderTextColor="#A6BCD0"
-                                    containerStyle={{
-                                        width: width * 0.8,
-                                        height: 50,
-                                        borderRadius: 5,
-                                        marginTop: 20,
-                                        marginBottom: 20,
-                                        borderColor: "#0325FF0A",
-                                        borderWidth: 1,
-                                    }}
-                                    dropDownContainerStyle={{
-                                        // backgroundColor: "cyan",
-                                        width: width * 0.8,
-                                        borderRadius: 10,
-                                        borderColor: "#dfdfdf",
-                                        borderWidth: 1,
-                                        marginTop: 10,
-                                        marginBottom: 10,
-                                    }}
-                                    ArrowDownIconComponent={({ style }) => (
+
+                                <TouchableOpacity
+                                    style={styles.dateInput}
+                                    onPress={showDatePicker}
+                                >
+                                    <Text style={styles.dateText}>
+                                        Fecha inicial
+                                    </Text>
+                                    <View style={styles.dateInputArrow}>
                                         <MaterialIcons
                                             name="keyboard-arrow-down"
                                             size={24}
                                             color="#A6BCD0"
                                         />
-                                    )}
-                                    zIndex={3000}
-                                    zIndexInverse={1000}
+                                    </View>
+                                </TouchableOpacity>
+                                <DateTimePickerModal
+                                    modalStyleIOS={styles.modalStyleIOS}
+                                    isVisible={isDatePickerVisible}
+                                    mode="date"
+                                    onConfirm={handleConfirm}
+                                    onCancel={hideDatePicker}
+                                    backdropStyleIOS={styles.backdrop}
+                                    is24Hour={true}
+                                    locale="es_CO"
+                                    display={
+                                        Platform.OS === "ios"
+                                            ? "inline"
+                                            : "default"
+                                    }
+                                    cancelTextIOS="Cancelar"
+                                    confirmTextIOS="Confirmar"
+                                    titleIOS="Seleccione una fecha"
+                                    headerTextIOS="Seleccione una fecha"
+                                    cancelText="Cancelar"
+                                    pickerContainerStyleIOS={
+                                        styles.pickerContainerStyleIOS
+                                    }
+                                    pickerStyleIOS={styles.pickerStyleIOS}
                                 />
-                                <DropDownPicker
-                                    items={toDate}
-                                    value={value2}
-                                    open={toDateOpen}
-                                    onOpen={onPressToDate}
-                                    // searchable={true}
-                                    searchPlaceholder="Buscar"
-                                    setOpen={setToDateOpen}
-                                    style={{
-                                        borderColor: "#0325FF0A",
-                                        borderWidth: 0.2,
-                                        borderRadius: 5,
-                                        shadowColor: "#0325FF14",
-                                        shadowOffset: {
-                                            width: 0,
-                                            height: 2,
-                                        },
-                                        shadowOpacity: 0.7,
-                                        shadowRadius: 3.84,
-                                        elevation: 5,
-                                    }}
-                                    listItemLabelStyle={{
-                                        fontFamily: "DosisRegular",
-                                        fontSize: 16,
-                                        color: "#8395A5",
-                                    }}
-                                    searchContainerStyle={{
-                                        // backgroundColor: "cyan",
-                                        borderBottomColor: "#dfdfdf",
-                                    }}
-                                    setValue={setValue2}
-                                    setItems={setToDate}
-                                    placeholder="Fecha hasta"
-                                    placeholderStyle={{
-                                        textAlign: "left",
-                                        color: "#A6BCD0",
-                                        fontFamily: "DosisRegular",
-                                        fontSize: 17,
-                                    }}
-                                    searchPlaceholderTextColor="#A6BCD0"
-                                    containerStyle={{
-                                        width: width * 0.8,
-                                        height: 50,
-                                        borderRadius: 5,
-                                        marginTop: 20,
-                                        marginBottom: 20,
-                                        borderColor: "#0325FF0A",
-                                        borderWidth: 1,
-                                    }}
-                                    dropDownContainerStyle={{
-                                        // backgroundColor: "cyan",
-                                        width: width * 0.8,
-                                        borderRadius: 10,
-                                        borderColor: "#dfdfdf",
-                                        borderWidth: 1,
-                                        marginTop: 10,
-                                        marginBottom: 10,
-                                    }}
-                                    ArrowDownIconComponent={({ style }) => (
+                                {/* 
+                                <DatePickerModal
+                                    mode="single"
+                                    visible={visible}
+                                    onDismiss={onDismiss}
+                                    onConfirm={onChange}
+                                    date={date}
+                                    saveLabel="Guardar"
+                                    cancelLabel="Cancelar"
+                                    title="Selecciona una fecha"
+                                    locale="en"
+                                    minDate={
+                                        new Date(
+                                            date.getFullYear(),
+                                            date.getMonth(),
+                                            date.getDate() - 1
+                                        )
+                                    }
+                                    maxDate={
+                                        new Date(
+                                            date.getFullYear(),
+                                            date.getMonth(),
+                                            date.getDate() + 1
+                                        )
+                                    }
+                                    label="Seleccionar la Fecha"
+                                />
+                                <TouchableOpacity
+                                    style={styles.button}
+                                    onPress={() => setVisible(true)}
+                                    uppercase={false}
+                                    mode="outlined"
+                                >
+                                    <Text style={styles.buttonText}>
+                                        Seleccionar fecha
+                                    </Text>
+                                </TouchableOpacity> */}
+                                <TouchableOpacity
+                                    style={styles.dateInput}
+                                    onPress={showDatePicker2}
+                                >
+                                    <Text style={styles.dateText}>
+                                        Fecha Final
+                                    </Text>
+                                    <View style={styles.dateInputArrow}>
                                         <MaterialIcons
                                             name="keyboard-arrow-down"
                                             size={24}
                                             color="#A6BCD0"
                                         />
-                                    )}
-                                    zIndex={2000}
-                                    zIndexInverse={2000}
+                                    </View>
+                                </TouchableOpacity>
+                                <DateTimePickerModal
+                                    modalStyleIOS={styles.modalStyleIOS}
+                                    textColor="white"
+                                    isVisible={isDatePickerVisible2}
+                                    mode="date"
+                                    onConfirm={handleConfirm2}
+                                    onCancel={hideDatePicker2}
+                                    backdropStyleIOS={styles.backdrop}
+                                    is24Hour={true}
+                                    locale="es_CO"
+                                    display={
+                                        Platform.OS === "ios"
+                                            ? "inline"
+                                            : "default"
+                                    }
+                                    cancelTextIOS="Cancelar"
+                                    confirmTextIOS="Confirmar"
+                                    titleIOS="Seleccione una fecha"
+                                    headerTextIOS="Seleccione una fecha"
+                                    cancelText="Cancelar"
+                                    pickerContainerStyleIOS={
+                                        styles.pickerContainerStyleIOS
+                                    }
+                                    pickerStyleIOS={styles.pickerStyleIOS}
                                 />
+
                                 <DropDownPicker
+                                    listMode="SCROLLVIEW"
                                     items={executive}
                                     value={value3}
                                     open={executiveOpen}
@@ -359,6 +371,7 @@ const PersonalFinanceScreen = ({ route }) => {
                                     zIndexInverse={3000}
                                 />
                                 <DropDownPicker
+                                    listMode="SCROLLVIEW"
                                     items={costCenter}
                                     value={value4}
                                     open={costCenterOpen}
@@ -570,5 +583,83 @@ const styles = StyleSheet.create({
         fontFamily: "DosisRegular",
         fontSize: 30,
         color: "#4D4F5C",
+    },
+    button: {
+        top: 10,
+        width: width * 0.4,
+        height: 40,
+        backgroundColor: "#FD53A5",
+        borderRadius: 5,
+        alignItems: "center",
+        justifyContent: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowRadius: 8,
+        borderBottomWidth: 0.5,
+    },
+    buttonText: {
+        fontFamily: "DosisBold",
+        fontSize: 17,
+        color: "#fff",
+    },
+    dateText: {
+        textAlign: "left",
+        color: "#A6BCD0",
+        fontFamily: "DosisRegular",
+        fontSize: 17,
+    },
+    backdrop: {
+        flex: 1,
+        // backgroundColor: "#FD53A5",
+        // opacity: 0.8,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    modalStyleIOS: {
+        fontFamily: "DosisBold",
+        fontSize: 20,
+    },
+    pickerContainerStyleIOS: {
+        fontFamily: "DosisBold",
+        // backgroundColor: "#FFF",
+        // opacity: 0.8,
+        borderRadius: 5,
+        marginTop: 20,
+        marginBottom: 20,
+        borderRadius: 10,
+        // borderWidth: 1,
+    },
+    pickerStyleIOS: {
+        color: "#8395A5",
+        // backgroundColor: "#0325FF14",
+
+        borderRadius: 10,
+    },
+    dateInput: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginTop: 20,
+        marginBottom: 5,
+        fontFamily: "DosisRegular",
+        alignSelf: "flex-start",
+        width: width * 0.8,
+        paddingHorizontal: 10,
+        height: "auto",
+        paddingVertical: "6%",
+        backgroundColor: "#FFF",
+        borderColor: "#0325FF0A",
+        borderWidth: 1,
+        borderRadius: 5,
+        shadowColor: "#0325FF14",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.7,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
 });

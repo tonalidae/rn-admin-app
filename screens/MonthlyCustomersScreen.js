@@ -46,12 +46,52 @@ const MonthlyCustomersScreen = ({ route }) => {
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
         {
-            label: "Amalia Central - Tunja",
-            value: "Amalia Central - Tunja",
+            label: "Enero",
+            value: "Enero",
         },
         {
-            label: "Cost Center 2",
-            value: "Cost Center 2",
+            label: "Febrero",
+            value: "Febrero",
+        },
+        {
+            label: "Marzo",
+            value: "Marzo",
+        },
+        {
+            label: "Abril",
+            value: "Abril",
+        },
+        {
+            label: "Mayo",
+            value: "Mayo",
+        },
+        {
+            label: "Junio",
+            value: "Junio",
+        },
+        {
+            label: "Julio",
+            value: "Julio",
+        },
+        {
+            label: "Agosto",
+            value: "Agosto",
+        },
+        {
+            label: "Septiembre",
+            value: "Septiembre",
+        },
+        {
+            label: "Octubre",
+            value: "Octubre",
+        },
+        {
+            label: "Noviembre",
+            value: "Noviembre",
+        },
+        {
+            label: "Diciembre",
+            value: "Diciembre",
         },
     ]);
 
@@ -85,6 +125,22 @@ const MonthlyCustomersScreen = ({ route }) => {
                                     Selecciona el mes a verificar
                                 </Text>
                                 <DropDownPicker
+                                    textStyle={
+                                        open === true
+                                            ? {
+                                                  fontFamily: "DosisSemiBold",
+                                                  fontSize: 16,
+                                                  color: "#8395A5",
+                                                  textAlign: "center",
+                                              }
+                                            : {
+                                                  fontFamily: "DosisSemiBold",
+                                                  fontSize: 16,
+                                                  color: "#8395A5",
+                                                  textAlign: "left",
+                                              }
+                                    }
+                                    listMode="SCROLLVIEW"
                                     items={items}
                                     value={value}
                                     open={open}

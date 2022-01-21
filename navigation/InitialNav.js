@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-// import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import SplashScreen from "../screens/SplashScreen";
 import MainScreen from "../screens/MainScreen";
 import LoginScreen from "../screens/LoginScreen";
@@ -22,7 +22,8 @@ const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
 const Drawer = createDrawerNavigator();
-// const Stack = createStackNavigator();
+const Stack = createStackNavigator();
+
 const InitialNav = () => {
     const [fontsLoaded] = useFonts({
         DosisBold: require("../assets/fonts/Dosis/Dosis-Bold.ttf"),
@@ -203,22 +204,6 @@ const InitialNav = () => {
                         ),
                     }}
                 />
-                {/* <Drawer.Screen
-                name="Información general"
-                component={GeneralScreen}
-            />
-            <Drawer.Screen
-                name="Gestión centros"
-                component={CostCenterScreen}
-            />
-            <Drawer.Screen
-                name="Consolidado individual"
-                component={PersonalFinanceScreen}
-            />
-            <Drawer.Screen
-                name="Clientes mes"
-                component={MonthlyCustomersScreen}
-            /> */}
             </Drawer.Navigator>
         );
     }
